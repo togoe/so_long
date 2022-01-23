@@ -13,83 +13,65 @@
 #include "libft.h"
 #include <stdlib.h>
 
-static char		**freeline(char **tab, int i)
+static int	count_words(char *str, char c)
 {
-	while (i > 0)
-	{
-		free(tab[i]);
-		i--;
-	}
-	free(tab);
-	return (NULL);
-}
-
-static int		line_nbr(char const *s, char c)
-{
-	int i;
-	int nline;
+	int	i;
+	int	trigger;
 
 	i = 0;
-	nline = 0;
-	while (s[i] == c)
-		i++;
-	while (s[i])
+	trigger = 0;
+	while (*str)
 	{
-		if ((s[i] == c && s[i + 1] != c) || s[i + 1] == '\0')
-			nline++;
-		i++;
-	}
-	return (nline);
-}
-
-static char		*fill_c_line(char const *s, char c)
-{
-	int		i;
-	char	*line;
-
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	if (!(line = malloc(sizeof(line) * i + 1)))
-	{
-		free(line);
-		return (NULL);
-	}
-	i = 0;
-	while (s[i] && s[i] != c)
-	{
-		line[i] = s[i];
-		i++;
-	}
-	line[i] = '\0';
-	return (line);
-}
-
-char			**ft_split(char const *s, char c)
-{
-	char	**tab;
-	int		i;
-	int		line;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	line = line_nbr(s, c);
-	if (!(tab = malloc(sizeof(*tab) * line + 1)))
-		return (0);
-	while (*s)
-	{
-		while (*s && *s == c)
-			s++;
-		if (*s && *s != c)
+		if (*str != c && trigger == 0)
 		{
-			if (!(tab[i] = fill_c_line(s, c)))
-				return (freeline(tab, i));
+			trigger = 1;
 			i++;
-			while (*s && *s != c)
-				s++;
 		}
+		else if (*str == c)
+			trigger = 0;
+		str++;
 	}
-	tab[i] = NULL;
-	return (tab);
+	return (i);
 }
+
+static char	*word_dup(char *str, int start, int finish)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
+}
+
+char	**ft_split(char *s, char c)
+{
+	int		i;
+	int		j;
+	int		index;
+	char	**split;
+
+	split = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!s || !split)
+		return (0);
+	i = 0;
+	j = 0;
+	index = -1;
+	while (i <= ft_strlen(s))
+	{
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		{
+			split[j++] = word_dup(s, index, i);
+			index = -1;
+		}
+		i++;
+	}
+	split[j] = 0;
+	return (split);
+}
+

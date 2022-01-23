@@ -3,7 +3,10 @@ MLX_DIR			=	./mlx/
 SRC_DIR			=	./srcs/
 INC_DIR			=	./includes/
 SRCS			=	main.c			\
-					pars_map.c
+					parsing_map.c	\
+					utils.c			\
+					ft_images.c		\
+
 					
 					
 SRC_BASENAME	=	$(addprefix $(SRC_DIR), $(SRCS))		

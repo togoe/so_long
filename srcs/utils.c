@@ -19,9 +19,31 @@ int     check_file(char *file)
     return (1);
 }
 
-int    check_c(char c)
+int     check_nb_char(t_vars *vars)
 {
-    if (c == '1' || c == '0' || c == 'C' || c == 'P' || c == 'E')
-        return (1);
-    return (0);
+    int     tab[4] = {0, 0, 0, 0};
+    int     i;
+    int     j;
+
+    i = 0;
+    while (vars->map[i])
+    {
+        j = 0;
+        while (vars->map[i][j])
+        {
+            if (vars->map[i][j] == '0')
+                tab[0] += 1;
+            if (vars->map[i][j] == 'P')
+                tab[1] += 1;
+            if (vars->map[i][j] == 'C')
+                tab[2] += 1;
+            if (vars->map[i][j] == 'E')
+                tab[3] += 1;
+            j++;
+        }
+        i++;
+    }
+    if (tab[0] < 1 || tab[1] != 1 || tab[2] < 1 || tab[3] != 1)
+        return (0);
+    return (1);
 }

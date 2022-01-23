@@ -60,13 +60,14 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strnstr
 							(const char *big, const char *little, size_t len);
 char				*ft_strdup(const char *s);
-char				*ft_substr(char const *s, unsigned int start, size_t len);
+char				*ft_substr(char const *s, int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
-char				**ft_split(char const *s, char c);
+char				**ft_split(char *s, char c);
 char				*ft_itoa(int n);
 char				*ft_strmapi(char const *s, char(*f)(unsigned int, char));
-size_t				ft_strlen(const char *s);
+int				ft_strlen(const char *s);
+char    			*ft_strjoin_gnl(char *s1, char *s2);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 t_list				*ft_lstlast(t_list *lst);

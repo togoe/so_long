@@ -36,9 +36,7 @@ typedef struct      s_vars {
     char    **map;
     int     collect;
     int     nb_exit;
-    int     nb_player;
-    int     width;
-    int     height;
+    int     moves;
 }                   t_vars;
 
 void    parsing_map(char *file, t_vars *vars);
@@ -46,5 +44,6 @@ int     check_file(char *file);
 int     ft_error(char *str);
 int     check_nb_char(t_vars *vars);
 void    init_img(t_vars *vars);
+void    ft_put_map(t_vars *vars);
 
 #endif

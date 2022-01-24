@@ -1,5 +1,20 @@
 #include "../includes/so_long.h"
 
+void	display_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	if (map)
+	{
+		while (map[i])
+		{
+			printf("map line number %d : %s\n", i, map[i]);
+			i++;
+		}
+	}
+}
+
 void     extract_file(char *file, t_vars *vars)
 {
     int     fd;

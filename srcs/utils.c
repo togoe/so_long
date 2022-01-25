@@ -33,27 +33,25 @@ int	check_file(char *file)
 
 int	check_nb_char(t_vars *vars)
 {
-	int	tab[4] = {0, 0, 0, 0};
-	int	i;
-	int	j;
+	int	tab[4];
 
-	i = 0;
-	while (vars->map[i])
+	while (++vars->t_i < 4)
+		tab[vars->t_i] = 0;
+	vars->t_i = -1;
+	while (vars->map[++vars->t_i])
 	{
-		j = 0;
-		while (vars->map[i][j])
+		vars->t_j = -1;
+		while (vars->map[vars->t_i][++vars->t_j])
 		{
-			if (vars->map[i][j] == '0')
+			if (vars->map[vars->t_i][vars->t_j] == '0')
 				tab[0] += 1;
-			if (vars->map[i][j] == 'P')
+			else if (vars->map[vars->t_i][vars->t_j] == 'P')
 				tab[1] += 1;
-			if (vars->map[i][j] == 'C')
+			else if (vars->map[vars->t_i][vars->t_j] == 'C')
 				tab[2] += 1;
-			if (vars->map[i][j] == 'E')
+			else if (vars->map[vars->t_i][vars->t_j] == 'E')
 				tab[3] += 1;
-			j++;
 		}
-		i++;
 	}
 	if (tab[0] < 1 || tab[1] != 1 || tab[2] < 1 || tab[3] != 1)
 		return (0);

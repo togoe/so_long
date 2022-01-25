@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctogoe <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/25 17:03:24 by ctogoe            #+#    #+#             */
+/*   Updated: 2022/01/25 17:08:37 by ctogoe           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -22,31 +34,33 @@
 # define LEFT 97
 # define ESC 65307
 
-typedef struct      s_vars {
-    void    *mlx;
-    void    *win;
-    void    *wall;
-    void    *grass;
-    void    *player;
-    void    *object;
-    void    *door;
-    char    **map;
-    int     len_line;
-    int     count_line;
-    int     p_x;
-    int     p_y;
-    int     collect;
-    int     moves;
-}                   t_vars;
+typedef struct s_vars {
+	void	*mlx;
+	void	*win;
+	void	*wall;
+	void	*grass;
+	void	*player;
+	void	*object;
+	void	*door;
+	char	**map;
+	int		len_line;
+	int		count_line;
+	int		p_x;
+	int		p_y;
+	int		collect;
+	int		moves;
+	int		t_i;
+	int		t_j;
+}					t_vars;
 
-void    parsing_map(char *file, t_vars *vars);
-int     check_file(char *file);
-int     ft_error(char *str);
-int     check_nb_char(t_vars *vars);
-void    init_img(t_vars *vars);
-void    ft_put_map(t_vars *vars);
-int     key_hook(int key, t_vars *vars);
-void    ft_display_right(t_vars *vars);
+void	parsing_map(char *file, t_vars *vars);
+int		check_file(char *file);
+int		ft_error(char *str);
+int		check_nb_char(t_vars *vars);
+void	init_img(t_vars *vars);
+void	ft_put_map(t_vars *vars);
+int		key_hook(int key, t_vars *vars);
+void	ft_display_right(t_vars *vars);
 void	ft_display_left(t_vars *vars);
 void	ft_display_up(t_vars *vars);
 void	ft_display_down(t_vars *vars);

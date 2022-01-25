@@ -23,6 +23,7 @@ void	init_struct(t_vars *vars)
 	vars->map = 0;
 	vars->p_x = 0;
 	vars->p_y = 0;
+	vars->t_i = -1;
 }
 
 int	close_win(t_vars *vars)
@@ -50,6 +51,7 @@ int	key_hook(int key, t_vars *vars)
 		ft_display_down(vars);
 	if (key == ESC)
 		close_win(vars);
+	ft_put_map(vars);
 	return (0);
 }
 

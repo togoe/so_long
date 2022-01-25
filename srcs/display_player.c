@@ -31,7 +31,6 @@ void	ft_display_right(t_vars *vars)
 		ft_putstr_fd(" moves\n", 1);
 		close_win(vars);
 	}
-	ft_put_map(vars);
 }
 
 void	ft_display_left(t_vars *vars)
@@ -53,7 +52,6 @@ void	ft_display_left(t_vars *vars)
 		ft_putstr_fd(" moves\n", 1);
 		close_win(vars);
 	}
-	ft_put_map(vars);
 }
 
 void	ft_display_up(t_vars *vars)
@@ -75,7 +73,6 @@ void	ft_display_up(t_vars *vars)
 		ft_putstr_fd(" moves\n", 1);
 		close_win(vars);
 	}
-	ft_put_map(vars);
 }
 
 void	ft_display_down(t_vars *vars)
@@ -97,5 +94,4 @@ void	ft_display_down(t_vars *vars)
 		ft_putstr_fd(" moves\n", 1);
 		close_win(vars);
 	}
-	ft_put_map(vars);
 }

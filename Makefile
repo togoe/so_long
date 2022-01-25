@@ -6,6 +6,7 @@ SRCS			=	main.c			\
 					parsing_map.c	\
 					utils.c			\
 					ft_images.c		\
+					display_player.c
 
 					
 					
@@ -37,3 +38,4 @@ fclean		:	clean
 
 re			:	fclean all
 
+.PHONY:		all clean fclean re

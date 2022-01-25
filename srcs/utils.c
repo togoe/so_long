@@ -45,5 +45,6 @@ int     check_nb_char(t_vars *vars)
     }
     if (tab[0] < 1 || tab[1] != 1 || tab[2] < 1 || tab[3] != 1)
         return (0);
+    vars->collect = tab[2];
     return (1);
 }

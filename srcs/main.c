@@ -8,9 +8,10 @@ void	init_struct(t_vars *vars)
 	vars->mlx = NULL;
 	vars->win = NULL;
 	vars->collect = 0;
-	vars->nb_exit = 0;
 	vars->moves = 0;
 	vars->map = 0;
+	vars->p_x = 0;
+    vars->p_y = 0;
 }
 
 int		close_win(t_vars *vars)
@@ -28,8 +29,17 @@ int		close_win(t_vars *vars)
 
 int	key_hook(int key, t_vars *vars)
 {
-	if (key == ESC)
+	if (key == RIGHT)
+		ft_display(vars);
+	else if (key == LEFT)
+		ft_display(vars);
+	else if (key == UP)
+		ft_display(vars);
+	else if (key == DOWN)
+		ft_display(vars);
+	else if (key == ESC)
 		close_win(vars);
+	ft_put_map(vars);
 	return (0);
 }
 
@@ -46,10 +56,9 @@ int	main(int ac, char **av)
 				(vars.count_line * IMG_PX), "so_long42");
 	init_img(&vars);
 	ft_put_map(&vars);
-	mlx_hook(vars.win, 2, 1L << 0, key_hook, &vars);
+	mlx_hook(vars.win, 2, 1L << 0, &key_hook, &vars);
 	mlx_hook(vars.win, 33, 131072, &close_win, &vars);
 	mlx_loop(vars.mlx);
-	
-	printf("gooooooooooood");
+	mlx_key_hook(vars.win, &key_hook, &vars);
 	return (0);
 }

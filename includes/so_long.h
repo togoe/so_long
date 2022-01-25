@@ -25,17 +25,17 @@
 typedef struct      s_vars {
     void    *mlx;
     void    *win;
-    void    *img;
     void    *wall;
     void    *grass;
     void    *player;
     void    *object;
     void    *door;
+    char    **map;
     int     len_line;
     int     count_line;
-    char    **map;
+    int     p_x;
+    int     p_y;
     int     collect;
-    int     nb_exit;
     int     moves;
 }                   t_vars;
 
@@ -45,5 +45,8 @@ int     ft_error(char *str);
 int     check_nb_char(t_vars *vars);
 void    init_img(t_vars *vars);
 void    ft_put_map(t_vars *vars);
-
+void    ft_display(t_vars *vars);
+int     key_hook(int key, t_vars *vars);
+int		close_win(t_vars *vars);
+void	init_struct(t_vars *vars);
 #endif

@@ -5,11 +5,16 @@ void    init_img(t_vars *vars)
     int     img_width;
     int     img_height;
 
-    vars->wall = mlx_xpm_file_to_image(vars->mlx, "./images/wall1.xpm", &img_width, &img_height);
-    vars->grass = mlx_xpm_file_to_image(vars->mlx, "./images/grass1.xpm", &img_width, &img_height);
-    vars->player = mlx_xpm_file_to_image(vars->mlx, "./images/player1.xpm", &img_width, &img_height);
-    vars->object = mlx_xpm_file_to_image(vars->mlx, "./images/colect1.xpm", &img_width, &img_height);
-    vars->door = mlx_xpm_file_to_image(vars->mlx, "./images/door1.xpm", &img_width, &img_height);
+    vars->wall = mlx_xpm_file_to_image(vars->mlx,
+                "./images/wall1.xpm", &img_width, &img_height);
+    vars->grass = mlx_xpm_file_to_image(vars->mlx,
+                "./images/grass1.xpm", &img_width, &img_height);
+    vars->player = mlx_xpm_file_to_image(vars->mlx,
+                "./images/player1.xpm", &img_width, &img_height);
+    vars->object = mlx_xpm_file_to_image(vars->mlx,
+                "./images/colect1.xpm", &img_width, &img_height);
+    vars->door = mlx_xpm_file_to_image(vars->mlx,
+                "./images/door1.xpm", &img_width, &img_height);
 }
 
 void    ft_put_img(int  x, int y, t_vars *vars)
@@ -26,6 +31,8 @@ void    ft_put_img(int  x, int y, t_vars *vars)
     if (vars->map[x][y] == 'P')
         mlx_put_image_to_window(vars->mlx, vars->win, vars->player,
             (y * IMG_PX), (x * IMG_PX));
+            vars->p_x = y;
+            vars->p_y = x;
     if (vars->map[x][y] == 'E')
         mlx_put_image_to_window(vars->mlx, vars->win, vars->door,
             (y * IMG_PX), (x * IMG_PX));
@@ -47,20 +54,4 @@ void    ft_put_map(t_vars *vars)
         }
         i++;
     }
-/*
-    int	x;
-	int	y;
-
-	y = 0;
-	while ((y * IMG_PX) < (vars->count_line * IMG_PX) && vars->map[y])
-	{
-		x = 0;
-		while ((y * IMG_PX) < (vars->len_line * IMG_PX) && vars->map[y][x])
-		{
-			ft_put_img(x, y, vars);
-			x += 1;
-		}
-		y += 1;
-	}
-*/
 }

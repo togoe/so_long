@@ -1,1 +1,0 @@
-vars.win = mlx_new_window(vars.mlx, vars.len_l * 48, vars.count_l * 48, "so_long42");

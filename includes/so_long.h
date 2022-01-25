@@ -45,8 +45,11 @@ int     ft_error(char *str);
 int     check_nb_char(t_vars *vars);
 void    init_img(t_vars *vars);
 void    ft_put_map(t_vars *vars);
-void    ft_display(t_vars *vars);
 int     key_hook(int key, t_vars *vars);
+void    ft_display_right(t_vars *vars);
+void	ft_display_left(t_vars *vars);
+void	ft_display_up(t_vars *vars);
+void	ft_display_down(t_vars *vars);
 int		close_win(t_vars *vars);
 void	init_struct(t_vars *vars);
 #endif

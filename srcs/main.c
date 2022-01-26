@@ -12,6 +12,20 @@
 
 #include "../includes/so_long.h"
 
+void	free_map(char **map)
+{
+	int		i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map[i]);
+	free(map);
+}
+
 void	init_struct(t_vars *vars)
 {
 	vars->len_line = 0;
@@ -36,6 +50,7 @@ int	close_win(t_vars *vars)
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
+	free_map(vars->map);
 	exit (EXIT_SUCCESS);
 }
 
